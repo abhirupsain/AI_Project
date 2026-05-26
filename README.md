@@ -18,3 +18,54 @@ Repo for AI Programming with Python
      - https://colab.research.google.com/drive/1peVkVS99uwYsBJ0G-NkZ5uo9OSYwNXg2?usp=sharing 
  
 ## IMDB sentiment analysis(old project by jonas)
+
+
+## Draw Equation Solver
+
+Draw handwritten math expressions and get instant results using a CNN-based digit recognizer + computer vision.
+
+= Features
+
+- Draw digits and operators directly on canvas
+
+- CNN model trained on MNIST (~99% accuracy)
+
+- Supports + − × ÷
+
+- Smart operator detection (geometry-based)
+
+- Real-time prediction with Streamlit UI
+
+= How it works
+
+#enum(
+
+  "Draw input on canvas",
+
+  "Image preprocessing (threshold + dilation)",
+
+  "Contour detection and symbol segmentation",
+
+  "Operator classification (geometry rules)",
+
+  "Digit classification (CNN model)",
+
+  "Safe evaluation using AST"
+
+)
+
+= Installation
+
+```bash
+
+git clone <your-repo-url>
+
+cd draw-equation-solver
+
+python -m venv venv
+
+source venv/bin/activate
+
+venv\Scripts\activate
+
+pip install -r requirements.txt
