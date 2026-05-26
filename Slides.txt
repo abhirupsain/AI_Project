@@ -1,0 +1,20 @@
+Matti — Intro + Problem + Solution + Conclusion
+Prepare slides explaining the problem and overall idea of the project, conclusion
+
+David — System Pipeline
+Create the full system flow diagram from input to output.
+Ensure all steps are clearly connected and easy to follow.
+
+Jonas — Image Processing + Segmentation
+Prepare slides on preprocessing and symbol extraction techniques.
+Include visuals showing thresholding, contours, and merging.
+
+Philip — Operator Detection
+Explain rule-based detection for +, −, ×, ÷ using geometry.
+Use simple diagrams to show how each operator is identified.
+
+Staniya — CNN Model + Evaluation
+Prepare slides on CNN architecture, training, and accuracy.
+Explain prediction logic and safe evaluation briefly.
+
+Abhirup — Demo
