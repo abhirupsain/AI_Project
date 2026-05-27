@@ -265,7 +265,7 @@ if canvas_result.image_data is not None:
 
     if gray.min() < 200:
         symbols, debug_img = segment_and_predict(gray, digit_model)
-        st.image(debug_img, caption="Detected Symbols")
+        st.image(debug_img)
 
         if symbols:
             equation = "".join(symbols)
