@@ -1,0 +1,15 @@
+{
+  "IMG_SIZE": 28,
+  "NUM_CLASSES": 14,
+  "BATCH_SIZE": 128,
+  "EPOCHS": 20,
+  "TARGET_PER_CLASS": 1048,
+  "AUGMENT_HEAVY": true,
+  "excluded_folders": [
+    "dec",
+    "eq",
+    "x",
+    "y",
+    "z"
+  ]
+}

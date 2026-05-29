@@ -5,5 +5,4 @@ scikit-learn==1.7.1
 streamlit==1.57.0
 streamlit-drawable-canvas==0.9.3
 tensorflow==2.21.0
-tensorflow-datasets==4.9.10
-tensorflow-metadata==1.17.3
+albumentations==2.0.8

@@ -1,71 +1,190 @@
-# AI_Project
-Repo for AI Programming with Python
+# 🧮 Draw Equation Solver
 
+A real-time handwritten mathematical expression recognition system built with TensorFlow, OpenCV, and Streamlit.
 
-# Possible projects
-## Physics inspired neural network - lagrangian neural network (old project by david, might require too much knowledge of Physics)
-- Network trying to predict the movement/time evolved states of physical systems(pendulum, double pendulum, weight and feathrer, charged particle in electrical field)
-- already available for this project:
-  - Written and trained networks for different systems and analysis of them in form of google collab sheets
-     - https://colab.research.google.com/drive/1HcmLWDwO4N9a9TM26wW2MqhZ6e0-yrNO?usp=sharing
-     - https://colab.research.google.com/drive/18t5leTnVJNHsjBG31g_1gdYMLLVKASAG?usp=sharing
-     - https://colab.research.google.com/drive/1ROr7G9g3nVtCQ-OSYJq82bSSPORJn4gp?usp=sharing
-  - powerpoint for full project(very physics heavy)
-     - https://docs.google.com/presentation/d/12_cVzqgiNnJ_K5UTyBxjegluyPMubgTwmQ79LjFMRPw/edit?usp=sharing
-  - mid project report(also somewhat physics heavy)
-     - see file
-  - paper and tutorial of original paper detailing workings of the network
-     - https://colab.research.google.com/drive/1peVkVS99uwYsBJ0G-NkZ5uo9OSYwNXg2?usp=sharing 
- 
-## IMDB sentiment analysis(old project by jonas)
+Draw mathematical expressions directly on an interactive canvas and receive instant predictions, expression reconstruction, and evaluation results.
 
+------------------------------------------------------------------------------
 
-## Draw Equation Solver
+##  Features
 
-Draw handwritten math expressions and get instant results using a CNN-based digit recognizer + computer vision.
+- Interactive drawing canvas powered by Streamlit
+- Recognition of handwritten digits (0–9)
+- Recognition of arithmetic operators:
+  - Addition (+)
+  - Subtraction (-)
+  - Multiplication (×)
+  - Division (÷)
+- CNN-based handwritten symbol classification
+- Automatic symbol segmentation using OpenCV
+- Real-time expression reconstruction
+- Safe arithmetic evaluation using Python AST
+- Visual debugging with detected bounding boxes and confidence scores
+- Lightweight deployment suitable for local execution
 
-= Features
+------------------------------------------------------------------------------
 
-- Draw digits and operators directly on canvas
+##  Model Architecture
 
-- CNN model trained on MNIST (~99% accuracy)
+The recognition engine uses a Convolutional Neural Network (CNN) trained on:
 
-- Supports + − × ÷
+- MNIST handwritten digit dataset
+- Handwritten Math Symbols dataset
 
-- Smart operator detection (geometry-based)
+Supported Classes:
 
-- Real-time prediction with Streamlit UI
+| Class Type | Symbols |
+|------------|-----------|
+| Digits     | 0–9 |
+| Operators  | +, -, ×, ÷ |
 
-= How it works
+Total Classes: 14
 
-#enum(
+------------------------------------------------------------------------------
 
-  "Draw input on canvas",
+##  Processing Pipeline
 
-  "Image preprocessing (threshold + dilation)",
+1. User draws an expression on the canvas.
+2. Canvas image is converted to grayscale.
+3. Image thresholding and dilation are applied.
+4. Connected components are detected using contour extraction.
+5. Symbols are segmented into individual regions.
+6. Each symbol is normalized and centered.
+7. CNN predicts the corresponding class.
+8. Symbols are reconstructed into a mathematical expression.
+9. The expression is safely evaluated.
+10. Results are displayed instantly.
 
-  "Contour detection and symbol segmentation",
+------------------------------------------------------------------------------
 
-  "Operator classification (geometry rules)",
+##  Project Structure
 
-  "Digit classification (CNN model)",
+project/
+│
+├── draw.py
+├── model.keras
+├── class_names.json
+│
+├── dataset/
+│   ├── add/
+│   ├── sub/
+│   ├── mul/
+│   └── div/
+│
+├── training_history.json
+├── class_info.json
+├── evaluation_results.json
+├── training_config.json
+│
+└── README.md
 
-  "Safe evaluation using AST"
+------------------------------------------------------------------------------
 
-)
+##  Requirements
 
-= Installation
+Recommended Python Version:
 
-```bash
+Python 3.11
 
-git clone <your-repo-url>
+Tested Environment:
 
+- Python 3.11
+- TensorFlow 2.19.0
+- OpenCV 4.x
+- Streamlit 1.45+
+- NumPy 2.x
+- scikit-learn 1.6+
+- Albumentations 2.x
+
+------------------------------------------------------------------------------
+
+##  Installation
+
+Clone the repository:
+
+git clone <repository-url>
 cd draw-equation-solver
 
-python -m venv venv
+Create a virtual environment.
 
+Linux / macOS:
+
+python -m venv venv
 source venv/bin/activate
 
+Windows:
+
+python -m venv venv
 venv\Scripts\activate
 
+Install dependencies:
+
 pip install -r requirements.txt
+
+------------------------------------------------------------------------------
+
+##  Required Packages
+
+- tensorflow
+- opencv-python
+- numpy
+- streamlit
+- streamlit-drawable-canvas
+- scikit-learn
+- matplotlib
+- albumentations
+
+------------------------------------------------------------------------------
+
+## Running the Application
+
+Start the Streamlit application:
+
+streamlit run draw.py
+
+Open the following URL in your browser:
+
+http://localhost:8501
+
+------------------------------------------------------------------------------
+
+## Example
+
+Input:
+
+23+14
+
+Prediction:
+
+23+14
+
+Result:
+
+37
+
+------------------------------------------------------------------------------
+
+##  Technologies Used
+
+- Python
+- TensorFlow / Keras
+- OpenCV
+- NumPy
+- Streamlit
+- scikit-learn
+- Albumentations
+- Matplotlib
+
+------------------------------------------------------------------------------
+
+##  Performance
+
+Typical performance achieved during testing:
+
+- Digit Recognition Accuracy: ~99%
+- Operator Recognition Accuracy: ~95–99%
+- Overall Validation Accuracy: ~98–99%
+
+Performance may vary depending on handwriting style, symbol spacing, and drawing quality.
+
+------------------------------------------------------------------------------

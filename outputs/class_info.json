@@ -1,0 +1,90 @@
+{
+  "num_classes": 14,
+  "img_size": 28,
+  "classes": [
+    {
+      "index": 0,
+      "folder": "0",
+      "symbol": "0",
+      "samples_balanced": 5923
+    },
+    {
+      "index": 1,
+      "folder": "1",
+      "symbol": "1",
+      "samples_balanced": 6742
+    },
+    {
+      "index": 2,
+      "folder": "2",
+      "symbol": "2",
+      "samples_balanced": 5958
+    },
+    {
+      "index": 3,
+      "folder": "3",
+      "symbol": "3",
+      "samples_balanced": 6131
+    },
+    {
+      "index": 4,
+      "folder": "4",
+      "symbol": "4",
+      "samples_balanced": 5842
+    },
+    {
+      "index": 5,
+      "folder": "5",
+      "symbol": "5",
+      "samples_balanced": 5421
+    },
+    {
+      "index": 6,
+      "folder": "6",
+      "symbol": "6",
+      "samples_balanced": 5918
+    },
+    {
+      "index": 7,
+      "folder": "7",
+      "symbol": "7",
+      "samples_balanced": 6265
+    },
+    {
+      "index": 8,
+      "folder": "8",
+      "symbol": "8",
+      "samples_balanced": 5851
+    },
+    {
+      "index": 9,
+      "folder": "9",
+      "symbol": "9",
+      "samples_balanced": 5949
+    },
+    {
+      "index": 10,
+      "folder": "add",
+      "symbol": "+",
+      "samples_balanced": 1048
+    },
+    {
+      "index": 11,
+      "folder": "sub",
+      "symbol": "-",
+      "samples_balanced": 1048
+    },
+    {
+      "index": 12,
+      "folder": "mul",
+      "symbol": "×",
+      "samples_balanced": 1048
+    },
+    {
+      "index": 13,
+      "folder": "div",
+      "symbol": "÷",
+      "samples_balanced": 1048
+    }
+  ]
+}
