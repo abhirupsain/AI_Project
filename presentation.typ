@@ -606,7 +606,7 @@
       ]
     ],
     [
-      *Future work*
+      *Possible future work*
 
       - Multi-digit numbers as a single unit
       - Fractions and parentheses
