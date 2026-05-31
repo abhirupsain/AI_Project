@@ -1,5 +1,5 @@
 {
-  "test_accuracy": 0.9938989281654358,
-  "digit_accuracy": 99.38,
-  "operator_accuracy": 99.59183673469387
+  "test_accuracy": 0.9945662617683411,
+  "digit_accuracy": 99.49,
+  "operator_accuracy": 98.77551020408163
 }
