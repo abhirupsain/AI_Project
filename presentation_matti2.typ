@@ -140,6 +140,27 @@
 ]
 
 
+#slide-frame(title: "Inference", slide-num: "28")[
+  #grid(columns: (1fr, 1fr), gutter: 24pt,
+    [
+      *Solver needs single characters* \
+      - probability vector gets converted to char
+      - confidence > 60% --> decision
+      - otherwise return "?"
+
+    ],
+    [
+      *Solver*
+
+      -  chars merged to string expression
+      - expression solved with AST evaluator
+
+      
+    ],
+  )
+            #image("accuracy_threshold.jpeg", width: 100%)
+
+]
 // ══════════════════════════════════════════════════════════════════════════════
 //  ABHIRUP — Demo (~2 min)
 // ══════════════════════════════════════════════════════════════════════════════

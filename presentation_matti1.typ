@@ -120,17 +120,6 @@
       #v(8pt)
       #text(fill: rgb("#cfd8dc"), size: 24pt)[Handwritten Math Expression Recognition]
       #v(36pt)
-      #grid(columns: (1fr,) * 3, gutter: 12pt,
-        align(center)[#text(fill: sky,  size: 12pt)[*Matti H. V. Lehmann*]   \ #text(fill: white, size: 11pt)[Introduction · Conclusion]],
-        align(center)[#text(fill: sky,  size: 12pt)[*David A. Spickenheuer*] \ #text(fill: white, size: 11pt)[System Pipeline]],
-        align(center)[#text(fill: sky,  size: 12pt)[*Jonas Schenke*]         \ #text(fill: white, size: 11pt)[Image Processing]],
-      )
-      #v(8pt)
-      #grid(columns: (1fr,) * 3, gutter: 12pt,
-        align(center)[#text(fill: sky,  size: 12pt)[*Philip Nguyen*]   \ #text(fill: white, size: 11pt)[Dataset & Data Prep]],
-        align(center)[#text(fill: sky,  size: 12pt)[*Staniya Thomas*]  \ #text(fill: white, size: 11pt)[CNN & Evaluation]],
-        align(center)[#text(fill: sky,  size: 12pt)[*Abhirup Sain*]    \ #text(fill: white, size: 11pt)[Live Demo]],
-      )
     ]
   ]
 ]
@@ -356,14 +345,15 @@
 #slide-frame(title: "Thresholding & Contour Detection", slide-num: "9")[
   #grid(rows: (1fr, 1fr, 1fr), gutter: 24pt,
   [
-    #grid(columns:(1fr, 1fr,1fr),gutter: 24pt,
+    #grid(columns:(01fr, 1.5fr,1fr),gutter: 24pt,
     [
                 #image("6_preprocessing.jpg", width: 50%)
-
+    
     ],
-    [= How to get from  Drawing to CNN-input?
+    [= How to get from  the drawing to the CNN-input?
       =  $==========>$],
     [
+    
                 #image("6_post_processing.jpg", width: 50%)
 
     ]
@@ -371,7 +361,7 @@
     )
     ],
     [
-      *Binarisation*
+      *First step: Binarisation*
       - Canvas: white (255), ink ≈ 0
       - `THRESH_BINARY_INV`: ink → 255, bg → 0
       - 3 × 3 dilation closes gaps between strokes
@@ -399,12 +389,11 @@
       - Box area < 30 px² discarded (noise filter)
       - Sort all boxes left → right by x-coordinate
 
-      #callout()[*Problem:* some signs and digits are/can be multi-stroke (÷, 5, 7) → each stroke gets its own box
+      #callout()[*Problem:*  signs and digits can be multi-stroke (÷, 5, 7) → each stroke gets its own box
       ]
-      *Solution:* merge horizontally adjacent boxes with gap ≤ *20 px*
+      *Solution:* merge boxes with gap ≤ *20 px*
       - Iterate boxes left → right
       - If next box starts within 20 px, expand current box
-      - Otherwise, emit current box and start a new one
 
     ],
     align(center + horizon)[

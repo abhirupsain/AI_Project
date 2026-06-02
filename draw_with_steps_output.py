@@ -269,7 +269,7 @@ if canvas_result.image_data is not None:
 
             # --- PRESENTATION / PIPELINE UI ---
             st.markdown("---")
-            st.markdown("### 🔍 Preprocessing Pipeline (For Presentation)")
+            st.markdown("### Preprocessing Pipeline (For Presentation)")
             st.caption("Right-click any image and select 'Save Image As...' to use in your PowerPoint.")
 
             st.markdown("#### Step A: Global Image Segmentation")
