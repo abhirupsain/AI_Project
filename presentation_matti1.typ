@@ -207,9 +207,9 @@
       #rect(fill: light, stroke: grey.lighten(40%),
             width: 100%, height: 220pt, radius: 6pt)[
         #align(center + horizon)[
-          #text(size: 52pt, fill: grey.lighten(20%))[3 + 4]
-          #v(4pt)
-          #text(size: 12pt, fill: grey)[Canvas drawing example]
+          #image("addition_screenshot.png", width: 100%)
+
+          
         ]
       ]
     ],
@@ -217,7 +217,7 @@
 ]
 
 #slide-frame(title: "Our Solution: Draw & Solve", slide-num: "5")[
-  #grid(columns: (1fr, 1fr), gutter: 24pt,
+  #grid(rows: (1fr, 1fr), gutter: 24pt,
     [
       + Draw an expression on a browser canvas
       + OpenCV segments individual symbols
@@ -230,11 +230,13 @@
         info[*Operators* \ + · − · × · ÷],
       )
     ],
+
+
     align(center + horizon)[
       #rect(fill: light, stroke: grey.lighten(40%),
-            width: 100%, height: 230pt, radius: 6pt)[
+            width: 60%, height: 240pt, radius: 6pt)[
         #align(center + horizon)[
-          #text(size: 13pt, fill: grey)[_App screenshot_]
+          #image("app_screenshot.png", width: 100%)
         ]
       ]
     ],
