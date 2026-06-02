@@ -116,7 +116,7 @@
                           else if calc.odd(row) { light } else { white },
         stroke: none, inset: (x: 8pt, y: 7pt),
         [*True*], [*Predicted*], [*Count*], [*Why?*],
-        [`4`], [`9`], [5], [Open loop vs. closed],
+        [`4`], [`9`], [5], [Open loop vs. stem],
         [`5`], [`3`], [5], [Similar curvature],
         [`9`], [`4`], [4], [Open loop vs. stem],
         [`7`], [`2`], [4], [Diagonal bar confusion],

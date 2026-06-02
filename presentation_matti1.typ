@@ -150,12 +150,12 @@
     table.cell(fill: navy)[#text(fill: white, weight: "bold")[Student ID]],
     table.cell(fill: navy)[#text(fill: white, weight: "bold")[Task]],
 
-    [Matti Hannes Vincent Lehmann], [T14H06309], [Introduction · Conclusion],
-    [David Axel Spickenheuer],      [T14H06329], [System Pipeline],
-    [Jonas Schenke],                [T14H06307], [Image Processing & Segmentation],
-    [Philip Nguyen],                [91499153X], [Dataset & Data Preparation],
-    [Staniya Thomas],               [T14H06310], [CNN Architecture & Evaluation],
-    [Abhirup Sain],                 [T14H06318], [Live Demo],
+    [Matti Hannes Vincent Lehmann], [T14H06309], [Presentation Slides],
+    [David Axel Spickenheuer],      [T14H06329], [Data Preparation & Augmentation],
+    [Jonas Schenke],                [T14H06307], [CNN Training & Evaluation],
+    [Philip Nguyen],                [91499153X], [Presentation Slides],
+    [Staniya Thomas],               [T14H06310], [Symbol Recognition Pipeline],
+    [Abhirup Sain],                 [T14H06318], [Streamlit UI & Integration],
   )
 ]
 
@@ -347,40 +347,29 @@
   )
 ]
 
-#slide-frame(title: "Preprocessing & Inference", slide-num: "9")[
-  #grid(columns: (1fr, 1fr), gutter: 24pt,
-    [
-      *Per-symbol preprocessing*
-      - Crop bounding box from greyscale image
-      - Add white padding, scale to fit 26 × 26
-      - Centre on 28 × 28 white canvas
-      - Divide ÷ 255 → ink ≈ 0, background ≈ 1
-
-      #v(10pt)
-      *Inference & assembly*
-      - CNN softmax → 14 class probabilities
-      - Confidence < 0.60 → label as `?`
-      - Sort symbols by x → expression string
-      - AST evaluator: only +, −, ×, ÷ permitted (no `eval()`)
-    ],
-    align(center + horizon)[
-      #rect(fill: light, stroke: grey.lighten(40%),
-            width: 100%, height: 220pt, radius: 6pt)[
-        #align(center + horizon)[
-          #text(size: 12pt, fill: grey)[_Raw → ROI → 28 × 28 model input_]
-        ]
-      ]
-    ],
-  )
-]
 
 
 // ══════════════════════════════════════════════════════════════════════════════
 //  JONAS — Segmentation (~2 min)
 // ══════════════════════════════════════════════════════════════════════════════
 
-#slide-frame(title: "Thresholding & Contour Detection", slide-num: "10")[
-  #grid(columns: (1fr, 1fr), gutter: 24pt,
+#slide-frame(title: "Thresholding & Contour Detection", slide-num: "9")[
+  #grid(rows: (1fr, 1fr, 1fr), gutter: 24pt,
+  [
+    #grid(columns:(1fr, 1fr,1fr),gutter: 24pt,
+    [
+                #image("6_preprocessing.jpg", width: 50%)
+
+    ],
+    [= How to get from  Drawing to CNN-input?
+      =  $==========>$],
+    [
+                #image("6_post_processing.jpg", width: 50%)
+
+    ]
+
+    )
+    ],
     [
       *Binarisation*
       - Canvas: white (255), ink ≈ 0
@@ -389,46 +378,59 @@
       - `findContours` detects white regions on black
 
       #v(10pt)
-      *Bounding boxes*
-      - Outermost contours only (`RETR_EXTERNAL`)
-      - Box area < 30 px² discarded (noise filter)
-      - Sort all boxes left → right by x-coordinate
+      
     ],
     align(center + horizon)[
       #rect(fill: light, stroke: grey.lighten(40%),
-            width: 100%, height: 230pt, radius: 6pt)[
+            width: 100%, height: 100pt, radius: 6pt)[
         #align(center + horizon)[
-          #text(size: 12pt, fill: grey)[_Gray → threshold → dilated → boxes_]
+          #image("threcholding.png", width: 100%)
         ]
       ]
     ],
   )
 ]
 
-#slide-frame(title: "Proximity Merging", slide-num: "11")[
+#slide-frame(title: "Proximity", slide-num: "10")[
   #grid(columns: (1fr, 1fr), gutter: 24pt,
     [
-      *Problem:* digits 4, 5, 7 are multi-stroke → each stroke gets its own box
+      *Bounding boxes*
+      - Outermost contours only (`RETR_EXTERNAL`)
+      - Box area < 30 px² discarded (noise filter)
+      - Sort all boxes left → right by x-coordinate
 
+      #callout()[*Problem:* some signs and digits are/can be multi-stroke (÷, 5, 7) → each stroke gets its own box
+      ]
       *Solution:* merge horizontally adjacent boxes with gap ≤ *20 px*
       - Iterate boxes left → right
       - If next box starts within 20 px, expand current box
       - Otherwise, emit current box and start a new one
 
-      #v(12pt)
-      #callout(color: green)[
-        Also handles the two dots in ÷ after dilation merges them with the bar.
-      ]
     ],
     align(center + horizon)[
       #rect(fill: light, stroke: grey.lighten(40%),
-            width: 100%, height: 230pt, radius: 6pt)[
+            width: 100%, height: 370pt, radius: 6pt)[
         #align(center + horizon)[
-          #text(size: 12pt, fill: grey)[_Before / after proximity merge_]
+          #image("boxes_pre_merge.jpg", width: 95%)
+          #image("boxes_post_merge.jpg", width: 95%)
+
+
+        
         ]
       ]
     ],
   )
+]#slide-frame(title: "Processing of individual charachters", slide-num: "11")[
+      *Final Step:* Conversion of boxed signs to CNN input-format 
+      + Cropping of Box-content
+      + Add padding 
+      + Downscaling of image to fit in 28 x 28 format
+      + centering + additional padding
+  
+  #v(8pt)
+
+  #image("symbol_processing.png", width: 100%)
+
 ]
 
 
@@ -436,7 +438,7 @@
 //  PHILIP — Dataset (~3 min)
 // ══════════════════════════════════════════════════════════════════════════════
 
-#slide-frame(title: "Dataset & Train/Test Split", slide-num: "12")[
+#slide-frame(title: "Dataset & Train/Test Split", slide-num: "14")[
 
   #grid(
     columns: (1fr, 1fr),
@@ -474,7 +476,7 @@
 
 ]
 
-#slide-frame(title: "Class Balancing & Augmentation", slide-num: "13")[
+#slide-frame(title: "Class Balancing & Augmentation", slide-num: "15")[
   #grid(columns: (1fr, 1fr), gutter: 24pt,
     [
       *Imbalance problem*
