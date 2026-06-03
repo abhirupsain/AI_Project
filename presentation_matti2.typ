@@ -126,7 +126,7 @@
     [
       *Key observations*
 
-      - *9* is the weakest class: 94.8% accuracy 
+      - *9* is the weakest class: 98.7% accuracy 
       - *−* and *÷*: 100% accuracy on the test set
       - Most errors are *digit-to-digit*, not cross-type
       - Worst pairs are visually near-identical shapes
